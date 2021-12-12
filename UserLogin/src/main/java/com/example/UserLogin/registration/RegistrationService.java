@@ -1,6 +1,6 @@
 package com.example.UserLogin.registration;
 
-import com.example.UserLogin.Email.EmailSender;
+import com.example.UserLogin.email.EmailSender;
 import com.example.UserLogin.appuser.AppUser;
 import com.example.UserLogin.appuser.AppUserRole;
 import com.example.UserLogin.appuser.AppUserService;

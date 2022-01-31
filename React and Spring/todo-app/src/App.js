@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import FirstComponent, {SecondComponent} from './components/learning-examples/FirstComponent';
+import FirstComponent from './components/learning-examples/FirstComponent';
+import SecondComponent from './components/learning-examples/SecondComponent';
+import ThirdComponent from './components/learning-examples/ThirdComponent';
 import logo from './logo.svg';
 import './App.css';
 
@@ -16,13 +18,9 @@ class App extends Component {
   }
 }
 
-function ThirdComponent() {
-  return (
-    <div className="thirdComponenet">
-      Third Component
-    </div>
-  );
-}
+
+
+
 
 
 export default App;

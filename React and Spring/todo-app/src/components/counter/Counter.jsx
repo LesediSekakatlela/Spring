@@ -7,12 +7,13 @@ class Counter extends Component {
     constructor() {
         super(); //Error 1
         this.state = {
-            counter : 0
+            counter : 0,
         }
 
         this.increment = this.increment.bind(this);
     }
-    
+
+    //render = () => {
     render() {
         return (
             <div className="counter">
@@ -22,6 +23,7 @@ class Counter extends Component {
         );
     }
 
+    //increment = () => {
     increment() { //Update state - counter++
         //console.log('increment');
         //this.state.counter++; //Bad Practice

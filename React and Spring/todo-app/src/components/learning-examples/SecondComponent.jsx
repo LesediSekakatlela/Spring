@@ -12,3 +12,4 @@ class SecondComponent extends Component {
 }
 
 export default SecondComponent;
+

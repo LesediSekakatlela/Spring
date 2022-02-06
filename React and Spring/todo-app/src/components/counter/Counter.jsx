@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './Counter.css';
 
 class Counter extends Component {
@@ -32,6 +33,14 @@ class Counter extends Component {
             counter: this.state.counter + this.props.by
         });
     }
+}
+
+Counter.defaultProps = {
+    by : 1
+}
+
+Counter.propTypes = {
+    by : PropTypes
 }
 
 export default Counter;

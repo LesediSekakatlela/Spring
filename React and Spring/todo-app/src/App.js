@@ -6,6 +6,7 @@ import Counter from './components/counter/Counter';
 import TodoApp from './components/todo/TodoApp';
 import './App.css';
 import withNavigation from './components/todo/withNavigation';
+import withParams from './components/todo/withParams';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
         {/* <Counter/> */}
         <TodoApp/>
         <withNavigation/>
+        <withParams/>
       </div>
     );
   }

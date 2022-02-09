@@ -1,17 +1,20 @@
-import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import withNavigation from './withNavigation';  
+import React, {Component} from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import withNavigation from './withNavigation.jsx'   
+import withParams from './withParams.jsx'
 
 class TodoApp extends Component {
     render() {
         const LoginComponentWithNavigation = withNavigation(LoginComponent);
+
+        const WelcomeComponentWithParams = withParams(WelcomeComponent);
         return (
             <div className="TodoApp">
                 <Router>
                     <Routes>
                         <Route path="/" element={<LoginComponentWithNavigation />} />
                         <Route path="/login" element={<LoginComponentWithNavigation />} />
-                        <Route path="/welcome" element={<WelcomeComponent />} />
+                        <Route path="/welcome/:name" element={<WelcomeComponentWithParams />} />
                         <Route path="*" element={<ErrorComponent />} />
                     </Routes>
                 </Router>
@@ -25,7 +28,7 @@ class TodoApp extends Component {
 
 class WelcomeComponent extends Component {
     render() {
-        return <div>Welcome in28minutes</div>
+        return <div>Welcome {this.props.params.name}</div>
     }
 }
 
@@ -72,7 +75,7 @@ class LoginComponent extends Component {
     loginClicked() {
         //in28minutes,dummy
         if(this.state.username==='in28minutes' && this.state.password==='dummy') {
-            this.props.navigate("/welcome")
+            this.props.navigate(`/welcome/${this.state.username}`)
             // this.setState({showSuccessMessage:true})
             // this.setState({hasLoginFailed:false})
         }
@@ -80,19 +83,21 @@ class LoginComponent extends Component {
             this.setState({showSuccessMessage:false})
             this.setState({hasLoginFailed:true})
         }
-        // console.log(this.state)
+        console.log(this.state)
     }
 
     render() {
         return (
             <div>
                 {/* <ShowInvalidCredentials hasLoginFailed={this.state.hasLoginFailed}/> */}
-                {this.state.hasLoginFailed && <div>Invalid Credentials</div>}
-                {this.state.showSuccessMessage && <div>Login Successful</div>}
+                {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
+                {this.state.showSuccessMessage && <div>Login Sucessful</div>}
                 {/* <ShowLoginSuccessMessage showSuccessMessage={this.state.showSuccessMessage}/> */}
-                User Name: <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
-                Password: <input type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
-                <button onClick={this.loginClicked}>Login</button>
+                <div className="TodoApp">
+                    User Name: <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
+                    Password: <input type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
+                    <button onClick={this.loginClicked}>Login</button>
+                </div>
             </div>
         )
     }

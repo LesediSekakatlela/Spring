@@ -1,12 +1,28 @@
 import React, {Component} from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 class TodoApp extends Component {
     render() {
         return (
             <div className="TodoApp">
-                <LoginComponent/>
+                <Router>
+                    <>
+                      <Route path="/" exact component={LoginComponent}/>
+                      <Route path="/login" component={LoginComponent}/>
+                      <Route path="/welcome" component={WelcomeComponent}/>
+                    </>
+                </Router>
+
+                {/* <LoginComponent/>
+                <WelcomeComponent/> */}
             </div>
         )
+    }
+}
+
+class WelcomeComponent extends Component {
+    render() {
+        return <div>Welcome in28minutes</div>
     }
 }
 
@@ -14,7 +30,7 @@ class LoginComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: 'in28min',
+            username: 'in28minutes',
             password: '',
             hasLoginFailed: false,
             showSuccessMessage: false
@@ -47,8 +63,8 @@ class LoginComponent extends Component {
     // }
 
     loginClicked() {
-        //in28min,dummy
-        if(this.state.username==='in28min' && this.state.password==='dummy') {
+        //in28minutes,dummy
+        if(this.state.username==='in28minutes' && this.state.password==='dummy') {
             console.log('Successful')
             this.setState({showSuccessMessage:true})
             this.setState({hasLoginFailed:false})

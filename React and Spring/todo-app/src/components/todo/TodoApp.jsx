@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import withNavigation from './withNavigation.jsx'   
+import withNavigation from './withNavigation.jsx'
 import withParams from './withParams.jsx'
 
 class TodoApp extends Component {
@@ -15,12 +15,54 @@ class TodoApp extends Component {
                         <Route path="/" element={<LoginComponentWithNavigation />} />
                         <Route path="/login" element={<LoginComponentWithNavigation />} />
                         <Route path="/welcome/:name" element={<WelcomeComponentWithParams />} />
+                        <Route path="/todos" element={<ListTodosComponent />} />
                         <Route path="*" element={<ErrorComponent />} />
                     </Routes>
                 </Router>
 
                 {/* <LoginComponent/>
                 <WelcomeComponent/> */}
+            </div>
+        )
+    }
+}
+
+class ListTodosComponent extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            todos:
+                [
+                    { id: 1, description: 'Learn to Dance' },
+                    { id: 2, description: 'Become an Expert in React' },
+                    { id: 3, description: 'Visit Brazil' }
+                ]
+        }
+    }
+
+    render() {
+        return (
+            <div>
+                <h1>List Todos</h1>
+                <table>
+                    <thread>
+                        <tr>
+                            <th>id</th>
+                            <th>description</th>
+                        </tr>
+                    </thread>
+                    <tbody>
+                        {
+                            this.state.todos.map(
+                                todo =>
+                                    <tr>
+                                        <td>{todo.id}</td>
+                                        <td>{todo.description}</td>
+                                    </tr>
+                            )
+                        }
+                    </tbody>
+                </table>
             </div>
         )
     }
@@ -57,7 +99,7 @@ class LoginComponent extends Component {
         this.setState(
             {
                 [event.target.name]
-                :event.target.value
+                    : event.target.value
             }
         )
     }
@@ -74,14 +116,14 @@ class LoginComponent extends Component {
 
     loginClicked() {
         //in28minutes,dummy
-        if(this.state.username==='in28minutes' && this.state.password==='dummy') {
+        if (this.state.username === 'in28minutes' && this.state.password === 'dummy') {
             this.props.navigate(`/welcome/${this.state.username}`)
             // this.setState({showSuccessMessage:true})
             // this.setState({hasLoginFailed:false})
         }
         else {
-            this.setState({showSuccessMessage:false})
-            this.setState({hasLoginFailed:true})
+            this.setState({ showSuccessMessage: false })
+            this.setState({ hasLoginFailed: true })
         }
         console.log(this.state)
     }
@@ -94,8 +136,8 @@ class LoginComponent extends Component {
                 {this.state.showSuccessMessage && <div>Login Sucessful</div>}
                 {/* <ShowLoginSuccessMessage showSuccessMessage={this.state.showSuccessMessage}/> */}
                 <div className="TodoApp">
-                    User Name: <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
-                    Password: <input type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
+                    User Name: <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
+                    Password: <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
                     <button onClick={this.loginClicked}>Login</button>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Switch } from 'react-router-dom';
 import withNavigation from './withNavigation';  
 
 class TodoApp extends Component {
@@ -9,9 +9,12 @@ class TodoApp extends Component {
             <div className="TodoApp">
                 <Router>
                     <Routes>
+                        <Swith>
                         <Route path="/" element={<LoginComponentWithNavigation />} />
                         <Route path="/login" element={<LoginComponentWithNavigation />} />
                         <Route path="/welcome" element={<WelcomeComponent />} />
+                        <Route component={ErrorComponent}/>
+                        </Swith>
                     </Routes>
                 </Router>
 
@@ -26,6 +29,10 @@ class WelcomeComponent extends Component {
     render() {
         return <div>Welcome in28minutes</div>
     }
+}
+
+function ErrorComponent() {
+    return <div>An Error Occurred. I don't know what to do! Contact support at abcd-efgh-ijkl</div>
 }
 
 class LoginComponent extends Component {

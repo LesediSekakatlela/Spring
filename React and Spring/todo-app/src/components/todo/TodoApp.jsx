@@ -9,10 +9,12 @@ class TodoApp extends Component {
         const LoginComponentWithNavigation = withNavigation(LoginComponent);
 
         const WelcomeComponentWithParams = withParams(WelcomeComponent);
+
+        const HeaderComponentWithNavigation = withNavigation(HeaderComponent);
         return (
             <div className="TodoApp">
                 <Router>
-                    <HeaderComponent />
+                    <HeaderComponentWithNavigation />
                     <Routes>
                         <Route path="/" element={<LoginComponentWithNavigation />} />
                         <Route path="/login" element={<LoginComponentWithNavigation />} />

@@ -41,8 +41,8 @@ class HeaderComponent extends Component {
                         <li><Link className="nav-link" to="/todos">Todos</Link></li>
                     </ul>
                     <ul className="navbar-nav navbar-collapse justify-content-end">
-                    <li><Link className="nav-link" to="/login">Login</Link></li>
-                    <li><Link className="nav-link" to="/logout">Logout</Link></li>
+                        <li><Link className="nav-link" to="/login">Login</Link></li>
+                        <li><Link className="nav-link" to="/logout">Logout</Link></li>
                     </ul>
                 </nav>
             </header>
@@ -90,29 +90,29 @@ class ListTodosComponent extends Component {
         return (
             <div>
                 <h1>List Todos</h1>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>id</th>
-                            <th>description</th>
-                            <th>Target Date</th>
-                            <th>Is Completes?</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.state.todos.map(
-                                todo =>
-                                    <tr>
-                                        <td>{todo.id}</td>
-                                        <td>{todo.description}</td>
-                                        <td>{todo.done.toString()}</td>
-                                        <td>{todo.targetDate.toString()}</td>
-                                    </tr>
-                            )
-                        }
-                    </tbody>
-                </table>
+                <div className="container">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>description</th>
+                                <th>Target Date</th>
+                                <th>Is Completes?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.state.todos.map(
+                                    todo =>
+                                        <tr>
+                                            <td>{todo.description}</td>
+                                            <td>{todo.done.toString()}</td>
+                                            <td>{todo.targetDate.toString()}</td>
+                                        </tr>
+                                )
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         )
     }
@@ -120,9 +120,14 @@ class ListTodosComponent extends Component {
 
 class WelcomeComponent extends Component {
     render() {
-        return <div>
-            Welcome {this.props.params.name}. You can manage your todos <Link to="/todos">here</Link>
-        </div>
+        return (
+            <div>
+                <h1>Welcome!</h1>
+                <div className="container">
+                    Welcome {this.props.params.name}. You can manage your todos <Link to="/todos">here</Link>
+                </div>
+            </div>
+        )
     }
 }
 
@@ -183,14 +188,16 @@ class LoginComponent extends Component {
     render() {
         return (
             <div>
-                {/* <ShowInvalidCredentials hasLoginFailed={this.state.hasLoginFailed}/> */}
-                {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
-                {this.state.showSuccessMessage && <div>Login Sucessful</div>}
-                {/* <ShowLoginSuccessMessage showSuccessMessage={this.state.showSuccessMessage}/> */}
-                <div className="TodoApp">
+                <h1>Login</h1>
+                <div className="container">
+                    {/* <ShowInvalidCredentials hasLoginFailed={this.state.hasLoginFailed}/> */}
+                    {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
+                    {this.state.showSuccessMessage && <div>Login Sucessful</div>}
+                    {/* <ShowLoginSuccessMessage showSuccessMessage={this.state.showSuccessMessage}/> */}
+                    {/* <div className="TodoApp"> */}
                     User Name: <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
                     Password: <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-                    <button onClick={this.loginClicked}>Login</button>
+                    <button className="btn btn-success" onClick={this.loginClicked}>Login</button>
                 </div>
             </div>
         )

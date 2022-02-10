@@ -11,15 +11,15 @@ class TodoApp extends Component {
         return (
             <div className="TodoApp">
                 <Router>
+                 <HeaderComponent/>
                     <Routes>
-                        <HeaderComponent/>
                         <Route path="/" element={<LoginComponentWithNavigation />} />
                         <Route path="/login" element={<LoginComponentWithNavigation />} />
                         <Route path="/welcome/:name" element={<WelcomeComponentWithParams />} />
                         <Route path="/todos" element={<ListTodosComponent />} />
                         <Route path="*" element={<ErrorComponent />} />
-                        <FooterComponent/>
                     </Routes>
+                    <FooterComponent/>
                 </Router>
 
                 {/* <LoginComponent/>

@@ -1,7 +1,11 @@
 class AuthenticationService {
-    registerSuccessfulLogin(username,password) {
+    registerSuccessfulLogin(username, password) {
         console.log('registerSuccessfulLogin')
         sessionStorage.setItem('authenticatedUser', username);
+    }
+
+    logout() {
+        sessionStorage.removeItem('authenticatedUser');
     }
 }
 

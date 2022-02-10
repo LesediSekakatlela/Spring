@@ -11,7 +11,7 @@ class TodoApp extends Component {
         return (
             <div className="TodoApp">
                 <Router>
-                 <HeaderComponent/>
+                    <HeaderComponent />
                     <Routes>
                         <Route path="/" element={<LoginComponentWithNavigation />} />
                         <Route path="/login" element={<LoginComponentWithNavigation />} />
@@ -19,7 +19,7 @@ class TodoApp extends Component {
                         <Route path="/todos" element={<ListTodosComponent />} />
                         <Route path="*" element={<ErrorComponent />} />
                     </Routes>
-                    <FooterComponent/>
+                    <FooterComponent />
                 </Router>
 
                 {/* <LoginComponent/>
@@ -32,9 +32,19 @@ class TodoApp extends Component {
 class HeaderComponent extends Component {
     render() {
         return (
-            <div>
-                Header <hr/>
-            </div>
+            <header>
+                <nav class="navbar">
+                    <div><a>in28Minutes</a></div>
+                    <ul class="navbar-nav">
+                        <li>Home</li>
+                        <li>Todos</li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li>Login</li>
+                        <li>Logout</li>
+                    </ul>
+                </nav>
+            </header>
         )
     }
 }
@@ -43,7 +53,7 @@ class FooterComponent extends Component {
     render() {
         return (
             <div>
-                <hr/>Footer
+                <hr />Footer
             </div>
         )
     }
@@ -55,9 +65,9 @@ class ListTodosComponent extends Component {
         this.state = {
             todos:
                 [
-                    { id: 1, description: 'Learn to Dance', done:false, targetDate: new Date() },
-                    { id: 2, description: 'Become an Expert in React', done:false, targetDate: new Date() },
-                    { id: 3, description: 'Visit Brazil', done:false, targetDate: new Date() }
+                    { id: 1, description: 'Learn to Dance', done: false, targetDate: new Date() },
+                    { id: 2, description: 'Become an Expert at React', done: false, targetDate: new Date() },
+                    { id: 3, description: 'Visit India', done: false, targetDate: new Date() }
                 ]
         }
     }
@@ -67,14 +77,14 @@ class ListTodosComponent extends Component {
             <div>
                 <h1>List Todos</h1>
                 <table>
-                    <thread>
+                    <thead>
                         <tr>
                             <th>id</th>
                             <th>description</th>
                             <th>Target Date</th>
                             <th>Is Completes?</th>
                         </tr>
-                    </thread>
+                    </thead>
                     <tbody>
                         {
                             this.state.todos.map(
@@ -97,8 +107,8 @@ class ListTodosComponent extends Component {
 class WelcomeComponent extends Component {
     render() {
         return <div>
-                 Welcome {this.props.params.name}. You can manage your todos <Link to="/todos">here</Link>
-              </div>
+            Welcome {this.props.params.name}. You can manage your todos <Link to="/todos">here</Link>
+        </div>
     }
 }
 

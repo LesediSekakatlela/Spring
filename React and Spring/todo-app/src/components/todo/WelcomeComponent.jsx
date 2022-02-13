@@ -33,12 +33,16 @@ class WelcomeComponent extends Component {
     }
 
     retrieveWelcomeMessage() {
-        HelloWorldService.executeHelloWorldService()
+        // HelloWorldService.executeHelloWorldService()
+        // .then( response => this.handleSuccessfulResponde(response))
+
+        HelloWorldService.executeHelloWorldBeanService()
         .then( response => this.handleSuccessfulResponde(response))
     }
 
     handleSuccessfulResponde(response) {
-        this.setState({welcomeMessage: response.data})
+        console.log(response)
+        this.setState({welcomeMessage: response.data.message})
     }
 }
 

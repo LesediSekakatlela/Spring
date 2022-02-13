@@ -10,7 +10,7 @@ class WelcomeComponent extends Component {
             welcomeMessage : ''
         }
         this.handleSuccessfulResponde = this.handleSuccessfulResponde.bind(this)
-        //this.handleError = this.handleError.bind(this)
+        this.handleError = this.handleError.bind(this)
     }
     
     render() {
@@ -42,7 +42,7 @@ class WelcomeComponent extends Component {
 
         HelloWorldService.executeHelloWorldPathVariableService(this.props.params.name)
         .then( response => this.handleSuccessfulResponde(response))
-        //.catch(error => this.handleError(error))
+        .catch(error => this.handleError(error))
     }
 
     handleSuccessfulResponde(response) {

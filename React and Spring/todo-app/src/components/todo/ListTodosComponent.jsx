@@ -55,6 +55,11 @@ class ListTodosComponent extends Component {
             )
     }
 
+    updateTodoClicked(id) {
+        // console.log('update ' + id)
+        this.props.navigate(`/todos/${id}`)
+    }
+
     render() {
         console.log('render')
         return (

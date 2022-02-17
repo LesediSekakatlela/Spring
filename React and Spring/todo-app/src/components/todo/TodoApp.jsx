@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import withNavigation from './withNavigation.jsx'
 import withParams from './withParams.jsx'
 import AuthenticatedRoute from './AuthenticatedRoute.jsx'
@@ -18,6 +18,11 @@ class TodoApp extends Component {
         const WelcomeComponentWithParams = withParams(WelcomeComponent);
 
         const HeaderComponentWithNavigation = withNavigation(HeaderComponent);
+
+        const TodoComponentWithParamsAndNavigation = withParams(withNavigation(TodoComponent));
+
+        const ListTodosComponentWithNavigation = withNavigation(ListTodosComponent)
+
         return (
             <div className="TodoApp">
                 <Router>
@@ -30,9 +35,14 @@ class TodoApp extends Component {
                                 <WelcomeComponentWithParams />
                             </AuthenticatedRoute>
                         } />
+                        <Route path="/todos/:id" element={
+                            <AuthenticatedRoute>
+                                <TodoComponentWithParamsAndNavigation />
+                            </AuthenticatedRoute>
+                        } />
                         <Route path="/todos" element={
                             <AuthenticatedRoute>
-                                <ListTodosComponent />
+                                <ListTodosComponentWithNavigation />
                             </AuthenticatedRoute>
                         } />
                         <Route path="/logout" element={

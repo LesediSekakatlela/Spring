@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 
 class TodoComponent extends Component {
-    constructor(props) {
-        super(props)
+    render() {
+        <div>Todo Component</div>
+    // constructor(props) {
+    //     super(props)
 
-        this.state = {
-            id: this.props.params.id
-        }
+    //     this.state = {
+    //         id: this.props.params.id
+        // }
     }
 }

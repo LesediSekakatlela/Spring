@@ -34,7 +34,7 @@ class ListTodosComponent extends Component {
             .then(
                 response => {
                     // console.log(response)
-                    this.setState({todos : response.data})
+                    this.setState({ todos: response.data })
                 }
             )
     }
@@ -50,7 +50,7 @@ class ListTodosComponent extends Component {
                             <tr>
                                 <th>Description</th>
                                 <th>Target Date</th>
-                                <th>Is Completes?</th>
+                                <th>Is Completed?</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -59,8 +59,8 @@ class ListTodosComponent extends Component {
                                     todo =>
                                         <tr key={todo.id}>
                                             <td>{todo.description}</td>
-                                            <td>{todo.done.toString()}</td>
                                             <td>{todo.targetDate.toString()}</td>
+                                            <td>{todo.done.toString()}</td>
                                         </tr>
                                 )
                             }

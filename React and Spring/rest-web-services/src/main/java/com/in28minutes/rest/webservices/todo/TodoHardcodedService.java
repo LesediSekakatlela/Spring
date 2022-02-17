@@ -21,4 +21,14 @@ public class TodoHardcodedService {
 	public List<Todo> findAll() {
 		return todos;
 	}
+	
+	public Todo deleteById(long id) {
+		Todo todo = findById(id);
+		todos.remove(todo);
+	}
+
+	public Todo findById(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

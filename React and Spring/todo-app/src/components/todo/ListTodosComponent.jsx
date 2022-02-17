@@ -4,6 +4,7 @@ import AuthenticationService from './AuthenticationService.js'
 
 class ListTodosComponent extends Component {
     constructor(props) {
+        console.log('constructor')
         super(props)
         this.state = {
             todos:
@@ -15,7 +16,19 @@ class ListTodosComponent extends Component {
         }
     }
 
+    componentWillUnmount() {
+        console.log('componentWillUnmount')
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('shouldComponentUpdate')
+        console.log(nextProps)
+        console.log(nextState)
+        return true
+    }
+
     componentDidMount() {
+        console.log('componentDidMount')
         let username = AuthenticationService.getLoggedInUserName
         TodoDataService.retrieveAllTodos(username)
             .then(
@@ -27,6 +40,7 @@ class ListTodosComponent extends Component {
     }
 
     render() {
+        console.log('render')
         return (
             <div>
                 <h1>List Todos</h1>

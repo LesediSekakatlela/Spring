@@ -18,7 +18,8 @@ public class TodoResource {
 	private TodoHardcodedService todoService;
 
 	@GetMapping("/users/{username}/todos")
-	public List<Todo> getAllTodos(@PathVariable String username) {
+	public List<Todo> getAllTodos(@PathVariable String username)  {
+		//Thread.sleep(3000);
 		return todoService.findAll();
 		
 	}

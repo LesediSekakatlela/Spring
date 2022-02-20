@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import moment from 'moment'
-import { Form, Formik, Field, ErrorMessage  } from 'formik'
+import { Form, Formik, Field, ErrorMessage } from 'formik'
+import TodoDataService from '../../api/todo/TodoDataService.js'
+import AuthenticationService from './AuthenticationService.js'
 
 class TodoComponent extends Component {
     constructor(props) {
@@ -8,12 +10,22 @@ class TodoComponent extends Component {
 
         this.state = {
             id: this.props.params.id,
-            description: 'Learn Forms',
+            description: '',
             targetDate: moment(new Date()).format('YYYY-MM-DD')
         }
 
         this.onSubmit = this.onSubmit.bind(this)
         this.validate = this.validate.bind(this)
+    }
+
+    componentDidMount() {
+        let username = AuthenticationService.getLoggedInUserName()
+
+        TodoDataService.retrieveTodo(username, this.state.id)
+            .then(response => this.setState({
+                description: response.data.description,
+                targetDate: moment(response.data.targetDate).format('YYYY-MM-DD')
+            }))
     }
 
     validate(values) {
@@ -47,13 +59,13 @@ class TodoComponent extends Component {
                         validateOnChange={false}
                         validateOnBlur={false}
                         validate={this.validate}
-                    // enableReinitialize={true}
+                        enableReinitialize={true}
                     >
                         {
                             (props) => (
                                 <Form>
                                     <ErrorMessage name="description" component="div" className="alert alert-warning" />
-                                    <ErrorMessage name="targetDate" component="div"  className="alert alert-warning" />
+                                    <ErrorMessage name="targetDate" component="div" className="alert alert-warning" />
                                     <fieldset className="form-group">
                                         <label>Description</label>
                                         <Field className="form-control" type="text" name="description" />

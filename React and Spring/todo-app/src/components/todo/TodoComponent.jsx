@@ -1,14 +1,44 @@
 import React, { Component } from 'react'
+import moment from 'moment'
+import { Form, Formik, Field } from 'formik'
 
 class TodoComponent extends Component {
-    render() {
-        return  <div>Todo Component for id - {this.props.params.id}</div>
-    // constructor(props) {
-    //     super(props)
+    constructor(props) {
+        super(props)
 
-    //     this.state = {
-    //         id: this.props.params.id
-    //     }
+        this.state = {
+            id: this.props.params.id,
+            description: '',
+            targetDate: moment(new Date()).format('YYYY-MM-DD')
+        }
+    }
+
+
+    render() {
+        return (
+            <div>
+                <h1>Todo</h1>
+                <div className="container">
+                    <Formik>
+                        {
+                            (props) => (
+                                <Form>
+                                    <fieldset className="form-group">
+                                        <label>Description</label>
+                                        <Field className="form-control" type="text" name="description"/>
+                                    </fieldset>
+                                    <fieldset className="form-group">
+                                        <label>Target Date</label>
+                                        <Field className="form-control" type="date" name="targetDate" />
+                                    </fieldset>
+                                    <button className="btn btn-success" type="submit">Save</button>
+                                </Form>
+                            )
+                        }
+                    </Formik>
+                </div>
+            </div>
+        )
     }
 }
 

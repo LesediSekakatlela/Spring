@@ -10,6 +10,7 @@ import HeaderComponent from './HeaderComponent.jsx'
 import FooterComponent from './FooterComponent.jsx'
 import LogoutComponent from './LogoutComponent.jsx'
 import WelcomeComponent from './WelcomeComponent.jsx'
+import TodoComponent from './TodoComponent.jsx'
 
 class TodoApp extends Component {
     render() {

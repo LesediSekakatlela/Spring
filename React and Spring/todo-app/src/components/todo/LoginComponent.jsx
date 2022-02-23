@@ -49,6 +49,17 @@ class LoginComponent extends Component {
             this.setState({ showSuccessMessage: false })
             this.setState({ hasLoginFailed: true })
         }
+
+        // AuthenticationService
+        //     .executeBasicAuthenticationService(this.state.username, this.state.password)
+        //     .then(() => {
+        //         AuthenticationService.registerSuccessfulLogin(this.state.username, this.state.password);
+        //         this.props.navigate(`/welcome/${this.state.username}`)
+        //     }).catch(() => {
+        //         this.setState({ showSuccessMessage: false })
+        //         this.setState({ hasLoginFailed: true })
+        //     })
+
         console.log(this.state)
     }
 

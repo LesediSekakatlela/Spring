@@ -2,9 +2,13 @@
 
 class AuthenticationService {
     registerSuccessfulLogin(username, password) {
+        // let username = 'in28minutes'
+        // let password = 'dummy'
+
+        // let basicAuthHeader = 'Basic ' + window.btoa(username + ":" + password)
         console.log('registerSuccessfulLogin')
         sessionStorage.setItem('authenticatedUser', username)
-        //this.setupAxiosInterceptors()
+        //this.setupAxiosInterceptors(basicAuthHeader)
     }
 
     logout() {
@@ -13,20 +17,16 @@ class AuthenticationService {
 
     isUserLoggedIn() {
         let user = sessionStorage.getItem('authenticatedUser')
-        if(user===null) return false;
+        if (user === null) return false;
         return true;
     }
     getLoggedInUserName() {
         let user = sessionStorage.getItem('authenticatedUser')
-        if(user===null) return '';
+        if (user === null) return '';
         return user;
     }
 
-    // setupAxiosInterceptors() {
-    //     let username = 'in28minutes'
-    //     let password = 'dummy'
-
-    //     let basicAuthHeader = 'Basic ' + window.btoa(username + ":" + password)
+    // setupAxiosInterceptors(basicAuthHeader) {
 
     //     axios.interceptors.request.use(
     //         (config) => {

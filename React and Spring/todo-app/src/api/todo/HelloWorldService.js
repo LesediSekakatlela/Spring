@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { yupToFormErrors } from 'formik';
 
 class HelloWorldService {
     executeHelloWorldService() {
@@ -13,7 +14,18 @@ class HelloWorldService {
 
     executeHelloWorldPathVariableService(name) {
         //console.log('executed service')
-        return axios.get(`http://localhost:8080/hello-world/path-variable/${name}`);
+        //let username = 'in28minutes'
+        //let password = 'dummy'
+
+        //let basicAuthHeader = 'Basic ' + window.btoa(username + ":" + password)
+
+        return axios.get(`http://localhost:8080/hello-world/path-variable/${name}`
+        //  ,{
+        //   headers : {
+        //       authorization: basicAuthHeader
+        //      }
+        //   }
+        );
     }
 }
 

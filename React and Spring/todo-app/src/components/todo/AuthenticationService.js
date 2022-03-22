@@ -12,10 +12,8 @@ class AuthenticationService {
     // }
 
     registerSuccessfulLogin(username, password) {
-        // let username = 'in28minutes'
-        // let password = 'dummy'
-
-        // let basicAuthHeader = 'Basic ' + window.btoa(username + ":" + password)
+        let basicAuthHeader = 'Basic ' + window.btoa(username + ":" + password)
+        
         console.log('registerSuccessfulLogin')
         sessionStorage.setItem('authenticatedUser', username)
         this.setupAxiosInterceptors(this.createBasicAuthToken(username, password))
@@ -37,10 +35,6 @@ class AuthenticationService {
     }
 
     setupAxiosInterceptors(basicAuthHeader) {
-        let username = 'in28minutes'
-        let password = 'dummy'
-
-        let basicAuthHeader = 'Basic ' + window.btoa(username + ":" + password)
 
         axios.interceptors.request.use(
             (config) => {

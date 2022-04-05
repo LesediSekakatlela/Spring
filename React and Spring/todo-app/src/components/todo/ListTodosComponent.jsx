@@ -8,8 +8,7 @@ class ListTodosComponent extends Component {
         console.log('constructor')
         super(props)
         this.state = {
-            todos:
-                [],
+            todos: [],
             message: null
         }
         this.deleteTodoClicked = this.deleteTodoClicked.bind(this)
@@ -48,14 +47,15 @@ class ListTodosComponent extends Component {
 
     deleteTodoClicked(id) {
         let username = AuthenticationService.getLoggedInUserName()
-        // console.log(id + "" + username);
+        //console.log(id + " " + username);
         TodoDataService.deleteTodo(username, id)
-            .then(
-                response => {
-                    this.setState({ message: `Delete of todo ${id} Successful` })
-                    this.refreshTodos()
-                }
-            )
+         .then (
+            response => {
+                this.setState({message : `Delete of todo ${id} Successful`})
+                this.refreshTodos()
+             }
+         )
+        
     }
 
     addTodoClicked() {

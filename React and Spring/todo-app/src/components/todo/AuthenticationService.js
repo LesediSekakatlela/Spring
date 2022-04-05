@@ -25,6 +25,15 @@ class AuthenticationService {
         this.setupAxiosInterceptors(this.createBasicAuthToken(username, password))
     }
 
+    registerSuccessfulLoginForJwt(username,token) {
+        sessionStorage.setItem('authenticatedUser', username)
+        this.setupAxiosInterceptors(this.createJWTToken(token))
+    }
+
+    createJWTToken(token) {
+        return 'Bearer ' + token
+    }
+
     logout() {
         sessionStorage.removeItem('authenticatein28minutesdUser');
     }
@@ -40,12 +49,12 @@ class AuthenticationService {
         return user;
     }
 
-    setupAxiosInterceptors(basicAuthHeader) {
+    setupAxiosInterceptors(token) {
         
         axios.interceptors.request.use(
             (config) => {
                 if(this.isUserLoggedIn()) {
-                    config.headers.authorization = basicAuthHeader
+                    config.headers.authorization = token
                 }
                 return config
             }

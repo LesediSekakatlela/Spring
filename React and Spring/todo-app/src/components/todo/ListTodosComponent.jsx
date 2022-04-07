@@ -5,7 +5,7 @@ import moment from 'moment'
 
 class ListTodosComponent extends Component {
     constructor(props) {
-        console.log('constructor')
+        
         super(props)
         this.state = {
             todos: [],
@@ -35,7 +35,7 @@ class ListTodosComponent extends Component {
     }
 
     refreshTodos() {
-        let username = AuthenticationService.getLoggedInUserName
+        let username = AuthenticationService.getLoggedInUserName()
         TodoDataService.retrieveAllTodos(username)
             .then(
                 response => {
@@ -78,7 +78,6 @@ class ListTodosComponent extends Component {
     }
 
     render() {
-        console.log('render')
         return (
             <div>
                 <h1>List Todos</h1>
@@ -103,7 +102,7 @@ class ListTodosComponent extends Component {
                                             <td>{moment(todo.targetDate).format('YYYY-MM-DD')}</td>
                                             <td>{todo.done.toString()}</td>
                                             <td><button className="btn btn-success" onClick={() => this.updateTodoClicked(todo.id)}>Update</button></td>
-                                            <td><button className="btn-warning" onClick={() => this.deleteTodoClicked(todo.id)}>Delete</button></td>
+                                            <td><button className="btn btn-warning" onClick={() => this.deleteTodoClicked(todo.id)}>Delete</button></td>
                                         </tr>
                                 )
                             }

@@ -12,8 +12,7 @@ public class BasicAuthenticationController {
     @GetMapping(path = "/basicauth")
     public AuthenticationBean helloWorldBean() {
         //throw new RuntimeException("Some Error has Happened! Contact Support at ***-***");
-        return new AuthenticationBean("You are authenticated");
-        
+        return new AuthenticationBean("You are authenticated"); 
     }
 }
     

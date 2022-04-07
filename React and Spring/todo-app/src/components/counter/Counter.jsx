@@ -29,14 +29,14 @@ class Counter extends Component {
     }
 
     reset() {
-        this.setState( {counter: 0});
+        this.setState({ counter: 0 });
     }
 
     increment(by) { 
         // console.log(`increment from child - ${by}`)
         this.setState(
             (prevState) => {
-            return {counter: this.state.counter + by}
+            return { counter: prevState.counter + by }
             }
         );
     }
@@ -45,7 +45,7 @@ class Counter extends Component {
         // console.log(`increment from child - ${by}`)
         this.setState(
             (prevState) => {
-            return {counter: this.state.counter - by}
+            return { counter: prevState.counter - by }
             }
         );
     }
@@ -73,7 +73,7 @@ class CounterButton extends Component {
                 <button onClick={() => this.props.decrementMethod(this.props.by)} >-{this.props.by}</button>
                 {/* <span className="count">{this.state.counter}</span> */}
             </div>
-        );
+        )
     }
 
     //increment = () => {
@@ -95,11 +95,11 @@ class CounterButton extends Component {
 }
 
 CounterButton.defaultProps = {
-    by : 1
+    by: 1
 }
 
 CounterButton.propTypes = {
-    by : PropTypes
+    by: PropTypes
 }
 
 export default Counter;

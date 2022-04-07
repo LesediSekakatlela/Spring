@@ -37,13 +37,15 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(jwtInMemoryUserDetailsService) .passwordEncoder(passwordEncoderBean());
+        auth.userDetailsService(jwtInMemoryUserDetailsService) .passwordEncoder(new BCryptPasswordEncoder());
+    	
     }
+    
 
-    @Bean
-    public PasswordEncoder passwordEncoderBean() {
-        return new BCryptPasswordEncoder();
-    }
+//    @Bean
+//    public PasswordEncoder passwordEncoderBean() {
+//        return new BCryptPasswordEncoder();
+//    }
 
     @Bean
     @Override
@@ -85,7 +87,7 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/**" //Other Stuff You want to Ignore
             )
             .and()
-            .ignoring();
-            //.antMatchers("/h2-console/**/**");//Should not be in Production!
+            .ignoring()
+            .antMatchers("/h2-console/**/**");//Should not be in Production!
     }
 }

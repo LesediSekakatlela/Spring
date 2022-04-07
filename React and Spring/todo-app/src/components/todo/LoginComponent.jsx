@@ -38,7 +38,7 @@ class LoginComponent extends Component {
     // }
 
     loginClicked() {
-        //in28minutes,dummy
+        // in28minutes,dummy
         // if (this.state.username === 'in28minutes' && this.state.password === 'dummy') {
         //     AuthenticationService.registerSuccessfulLogin(this.state.username, this.state.password);
         //     this.props.navigate(`/welcome/${this.state.username}`)

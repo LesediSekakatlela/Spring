@@ -18,6 +18,11 @@ class TodoComponent extends Component {
         this.validate = this.validate.bind(this)
     }
 
+    // handleChange(event) {
+    //     this.setState({description: event.target.value});
+    //   }
+
+
     componentDidMount() {
         if (this.state.id === -1) {
             return
@@ -88,7 +93,7 @@ class TodoComponent extends Component {
                                     <ErrorMessage name="targetDate" component="div" className="alert alert-warning" />
                                     <fieldset className="form-group">
                                         <label>Description</label>
-                                        <Field className="form-control" type="text" name="description" />
+                                        <Field className="form-control"  value={this.state.value} type="text" name="description" />
                                     </fieldset>
                                     <fieldset className="form-group">
                                         <label>Target Date</label>
